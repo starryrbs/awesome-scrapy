@@ -16,7 +16,7 @@ class JobInfoSpider(scrapy.Spider):
     }
 
     def start_requests(self):
-        keyword = 'python'
+        keyword = '机器学习'
         query_job_url = "https://www.zhipin.com/c101020100/?query={keyword}&page={page}&ka=page-{page}"
         for i in range(1, 10):
             url = query_job_url.format(keyword=keyword, page=i)

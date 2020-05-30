@@ -52,15 +52,20 @@ class BossJobDetailPipeline:
         backgroud_Image = np.array(Image.open("111.jpg"))
         # 绘制词云图
         #             mask=backgroud_Image,  # 设置背景图片
+        stop_words = set(STOPWORDS)
+        stop_words.add('岗位职责')
+        stop_words.add('岗位要求')
+        stop_words.add('要求')
+        stop_words.add('任职要求')
+        stop_words.add('职位要求')
+        stop_words.add('职位描述')
         wc = WordCloud(
             font_path='font.ttf',  # 显示中文，可以更换字体
             background_color='white',  # 背景色
             width=1200,
-            height=800
-            # max_words=30,  # 最大显示单词数
-            # max_font_size=60  # 频率最大单词字体大小
+            height=800,
+            stopwords=stop_words,  # 停止词
         ).generate(job_details)
         # 传入需画词云图的文本
         image = wc.to_image()
         image.show()
-

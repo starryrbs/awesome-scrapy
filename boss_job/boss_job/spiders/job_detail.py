@@ -25,7 +25,7 @@ class JobDetailSpider(scrapy.Spider):
     @staticmethod
     def get_job_url():
         with open('job.json', 'r', encoding='utf-8') as file_pipeline:
-            return json.load(file_pipeline)[:2]
+            return json.load(file_pipeline)
 
     def parse(self, response):
         item = BossJobDetailItem()
